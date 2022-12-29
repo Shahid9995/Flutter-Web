@@ -1,6 +1,5 @@
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
-import 'dart:io' show Platform;
+import 'package:flutter_web/util/platform.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -28,7 +27,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home:MyHomePage() ,
+      home:const MyHomePage() ,
       // home: const MyHomePage(title:(kIsWeb)?"Flutter Web Page": 'Flutter Android Page'),
     );
   }
@@ -70,6 +69,10 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                if(!GetPlatform.isWeb)
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height*0.1,
+                  ),
                   const Text(
                     'Gmail',style: TextStyle(fontWeight: FontWeight.w500),
                   ),
