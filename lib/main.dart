@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web/util/platform.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      useInheritedMediaQuery:true,
+      useInheritedMediaQuery: true,
       debugShowCheckedModeBanner: false,
 
       title: 'Flutter Demo',
@@ -27,17 +28,21 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home:const MyHomePage() ,
+      home: const MyHomePage(),
       // home: const MyHomePage(title:(kIsWeb)?"Flutter Web Page": 'Flutter Android Page'),
     );
   }
 }
+
 class MyHomePage extends StatefulWidget {
- const MyHomePage({super.key,});
+  const MyHomePage({
+    super.key,
+  });
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
+
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
@@ -51,6 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter++;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -64,42 +70,220 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: <Widget>[
             Container(
-              padding: const EdgeInsets.fromLTRB(0, 10, 10,10),
+              padding: const EdgeInsets.fromLTRB(0, 10, 10, 10),
               // alignment: Alignment.topRight,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                if(!GetPlatform.isWeb)
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height*0.1,
-                  ),
+                  if (!GetPlatform.isWeb)
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.1,
+                    ),
                   const Text(
-                    'Gmail',style: TextStyle(fontWeight: FontWeight.w500),
+                    'Gmail',
+                    style: TextStyle(fontWeight: FontWeight.w500),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   const Text(
-                    'Images',style: TextStyle(fontWeight: FontWeight.w500),
+                    'Images',
+                    style: TextStyle(fontWeight: FontWeight.w500),
                   ),
-                  SizedBox(
-                    width:10,
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.asset(
+                      "assets/dotIcon.png",
+                      height: 20,
+                      width: 20,
+                    ),
+                  ),
+                  const CircleAvatar(
+                    backgroundImage: AssetImage("assets/pic.png"),
                   ),
                 ],
               ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(
+                  child: Image.asset(
+                    "assets/google_doodle.png",
+                    fit: BoxFit.cover,
+                    filterQuality: FilterQuality.high,
+                  ),
+                )
+              ],
             ),
+            Container(
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(25)),
+              width: MediaQuery.of(context).size.width / 2.5,
+              child: Row(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(left: 8.0, right: 4),
+                    child: Icon(
+                      Icons.search,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  Expanded(
+                    child: TextFormField(
+                      cursorColor: Colors.black,
+                      cursorWidth: 1,
+                      decoration: const InputDecoration(
+                        hintText: "Search",
+                        border: InputBorder.none,
+
+                        // focusedBorder: OutlineInputBorder(
+                        //   borderRadius: BorderRadius.circular(25.0),
+                        //   borderSide: const BorderSide(
+                        //     color: Colors.grey,
+                        //   ),
+                        // ),
+                        // enabledBorder: OutlineInputBorder(
+                        //   borderRadius: BorderRadius.circular(25.0),
+                        //   borderSide: const BorderSide(
+                        //     color: Colors.grey,
+                        //   ),
+                        // ),
+                      ),
+                    ),
+                  ),
+                  Image.asset(
+                    "assets/microphone.png",
+                    height: 20,
+                    width: 20,
+                    // fit: BoxFit.cover,
+                    // filterQuality: FilterQuality.high,
+                  ),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  Image.asset(
+                    "assets/camera.png",
+                    height: 24,
+                    width: 24,
+                    // fit: BoxFit.cover,
+                    // filterQuality: FilterQuality.high,
+                  ),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Card(
+                    color: Colors.grey[350],
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text("Google Search"),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Card(
+                    color: Colors.grey[350],
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text("I'm Feel Lucky"),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 24,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text("Google offered in: ",
+                    style: TextStyle(fontSize: 12)),
+                InkWell(
+                    onTap: () {},
+                    child: const Text(
+                      "اردو",
+                      style: TextStyle(color: Colors.blue, fontSize: 12),
+                    )),
+                InkWell(
+                    onTap: () {},
+                    child: const Text("پښتو",
+                        style: TextStyle(color: Colors.blue, fontSize: 12))),
+                InkWell(
+                    onTap: () {},
+                    child: const Text("سنڌي",
+                        style: TextStyle(color: Colors.blue, fontSize: 12)))
+              ],
+            ),
+            const Spacer(),
+            Container(
+              color: Colors.grey[200],
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Text(
+                      "Pakistan",
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                  const Divider(),
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text("About"),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        Text("Advertising"),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        Text("Business"),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        Text("How Search Word"),
+                        Spacer(),
+                        Text("Privicy"),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        Text("Term"),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        Text("Settings"),
+                        SizedBox(
+                          width: 8,
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            )
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child:const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
